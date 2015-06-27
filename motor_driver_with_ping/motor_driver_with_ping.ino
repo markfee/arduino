@@ -57,19 +57,35 @@ void move(int left, int right, int time)
   
   stop();
 }
-  char chbuffer[32];
-  int dir = -1;
+char chbuffer[32];
+int dir = -1;
+
+unsigned int sample_dist_cm() {
+  const unsigned int PING_COUNT = 6;
+  unsigned int dist = 0; 
+  unsigned int zero_count = 0;
+  
+  for (int i = 0; i < PING_COUNT; i++) {
+    unsigned int ping = sonar.ping_cm();
+    if (ping ==0) {
+      zero_count++;
+    } else {
+      dist += ping;
+    }
+  }
+  return zero_count > (PING_COUNT /  2) ? 100 :  (unsigned int) ((0.5 + dist) / (PING_COUNT - zero_count ) );
+}
+
 void loop()
 {
-  unsigned int dist = sonar.ping_cm();
-  delay(20);
+  unsigned int dist = sample_dist_cm();
   if ( dist > 0 && dist <= 10) {
     move(-100, -100, 500);
     delay(500);
-  } else if ( dist > 10 && dist <= 50) {
+  } else if ( dist > 10 && dist <= 30) {
     move(dir * 200, dir * -200, 2000);
   } else {
-    move(200, 200, 500);
+    move(200, 200, dist * 10);
   }
 }
 
