@@ -76,15 +76,20 @@ unsigned int sample_dist_cm() {
   return zero_count > (PING_COUNT /  2) ? 100 :  (unsigned int) ((0.5 + dist) / (PING_COUNT - zero_count ) );
 }
 
+  int dir = 0;
+
 void loop()
 {
   unsigned int dist = sample_dist_cm();
   if ( dist > 0 && dist <= 10) {
+    dir = -1;
     move(-100, -100, 500);
     delay(500);
-  } else if ( dist > 10 && dist <= 30) {
+  } else if ( dir == -1 || (dist > 10 && dist <= 30 )) {
+    dir = 0;
     move(dir * 200, dir * -200, 2000);
   } else {
+    dir = 1;
     move(200, 200, dist * 10);
   }
 }
