@@ -16,6 +16,19 @@ int in2 = 8;
 int enB = 5;
 int in3 = 7;
 int in4 = 6;
+
+int motorPin1 = 2;
+int motorPin2 = 3;
+int motorPin3 = 4;
+int motorPin4 = 5;
+
+int motorSpeed = 10000;  //variable to set stepper speed
+int count = 0;          // count of steps made
+int countsperrev = 128; // number of steps per full revolution
+int lookup[8] = {B01000, B01100, B00100, B00110, B00010, B00011, B00001, B01001};
+
+
+
 void setup()
 {
   Serial.begin(9600); 
@@ -26,6 +39,18 @@ void setup()
   pinMode(in2, OUTPUT);
   pinMode(in3, OUTPUT);
   pinMode(in4, OUTPUT);
+  
+  //declare the motor pins as outputs
+  pinMode(motorPin1, OUTPUT);
+  pinMode(motorPin2, OUTPUT);
+  pinMode(motorPin3, OUTPUT);
+  pinMode(motorPin4, OUTPUT);  
+  char buffer[32];
+  for (int i = 5; i > 0; i--) {
+    sprintf(buffer, "Please wait %d seconds\n", i);
+    Serial.print(buffer);
+    delay(1000);
+  }
 }
 
 void setSpeed(int left, int right) 
@@ -76,79 +101,66 @@ unsigned int sample_dist_cm() {
 }
 
   int dir = 1;
-
+  boolean doMove = false;
 void loop()
 {
   unsigned int dist = sample_dist_cm();
-  if ( dist > 0 && dist <= 10) {
-    dir = -1;
-    move(-100, -100, 500);
-    delay(500);
-  } else if ( dir == -1 || (dist > 10 && dist <= 50 )) {
-    dir = 0;
-    move(200, -200, 2000);
-  } else {
-    dir = 1;
-    move(200, 200, dist * 10);
+  Serial.println(count);
+  
+  if(count < countsperrev ) {
+    Serial.println("clockwise");
+    clockwise();
+  }
+  else if (count == countsperrev * 2) {
+    count = 0;
+  }
+  else {
+    Serial.println("anticlockwise");
+    anticlockwise();
+  }
+  count++;  
+  
+  if (doMove) {
+    if ( dist > 0 && dist <= 10) {
+      dir = -1;
+      move(-100, -100, 500);
+      delay(500);
+    } else if ( dir == -1 || (dist > 10 && dist <= 50 )) {
+      dir = 0;
+      move(200, -200, 2000);
+    } else {
+      dir = 1;
+      move(200, 200, dist * 10);
+    }
   }
 }
 
-
-void demoOne()
+//////////////////////////////////////////////////////////////////////////////
+//set pins to ULN2003 high in sequence from 1 to 4
+//delay "motorSpeed" between each pin setting (to determine speed)
+void anticlockwise()
 {
-  // this function will run the motors in both directions at a fixed speed
-  // turn on motor A
-  digitalWrite(in1, HIGH);
-  digitalWrite(in2, LOW);
-  // set speed to 200 out of possible range 0~255
-  analogWrite(enA, 200);
-  // turn on motor B
-  digitalWrite(in3, HIGH);
-  digitalWrite(in4, LOW);
-  // set speed to 200 out of possible range 0~255
-  analogWrite(enB, 200);
-  delay(2000);
-  // now change motor directions
-  digitalWrite(in1, LOW);
-  digitalWrite(in2, HIGH);  
-  digitalWrite(in3, LOW);
-  digitalWrite(in4, HIGH); 
-  delay(2000);
-  // now turn off motors
-  digitalWrite(in1, LOW);
-  digitalWrite(in2, LOW);  
-  digitalWrite(in3, LOW);
-  digitalWrite(in4, LOW);
+  for(int i = 0; i < 8; i++)
+  {
+    setOutput(i);
+    delayMicroseconds(motorSpeed);
+  }
 }
-void demoTwo()
+
+void clockwise()
 {
-  // this function will run the motors across the range of possible speeds
-  // note that maximum speed is determined by the motor itself and the operating voltage
-  // the PWM values sent by analogWrite() are fractions of the maximum speed possible 
-  // by your hardware
-  // turn on motors
-  digitalWrite(in1, LOW);
-  digitalWrite(in2, HIGH);  
-  digitalWrite(in3, LOW);
-  digitalWrite(in4, HIGH); 
-  // accelerate from zero to maximum speed
-  for (int i = 0; i < 256; i++)
+  for(int i = 7; i >= 0; i--)
   {
-    analogWrite(enA, i);
-    analogWrite(enB, i);
-    delay(20);
-  } 
-  // decelerate from maximum speed to zero
-  for (int i = 255; i >= 0; --i)
-  {
-    analogWrite(enA, i);
-    analogWrite(enB, i);
-    delay(20);
-  } 
-  // now turn off motors
-  digitalWrite(in1, LOW);
-  digitalWrite(in2, LOW);  
-  digitalWrite(in3, LOW);
-  digitalWrite(in4, LOW);  
+    setOutput(i);
+    delayMicroseconds(motorSpeed);
+  }
+}
+
+void setOutput(int out)
+{
+  digitalWrite(motorPin1, bitRead(lookup[out], 0));
+  digitalWrite(motorPin2, bitRead(lookup[out], 1));
+  digitalWrite(motorPin3, bitRead(lookup[out], 2));
+  digitalWrite(motorPin4, bitRead(lookup[out], 3));
 }
 
