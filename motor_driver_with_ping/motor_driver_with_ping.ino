@@ -3,8 +3,8 @@
 
 #include <NewPing.h>
 
-#define TRIGGER_PIN  12  // Arduino pin tied to trigger pin on the ultrasonic sensor.
-#define ECHO_PIN     11  // Arduino pin tied to echo pin on the ultrasonic sensor.
+#define TRIGGER_PIN  11  // Arduino pin tied to trigger pin on the ultrasonic sensor.
+#define ECHO_PIN     10  // Arduino pin tied to echo pin on the ultrasonic sensor.
 #define MAX_DISTANCE 200 // Maximum distance we want to ping for (in centimeters). Maximum sensor distance is rated at 400-500cm.
 
 NewPing sonar(TRIGGER_PIN, ECHO_PIN, MAX_DISTANCE); // NewPing setup of pins and maximum distance.
@@ -58,7 +58,6 @@ void move(int left, int right, int time)
   stop();
 }
 char chbuffer[32];
-int dir = -1;
 
 unsigned int sample_dist_cm() {
   const unsigned int PING_COUNT = 6;
@@ -76,7 +75,7 @@ unsigned int sample_dist_cm() {
   return zero_count > (PING_COUNT /  2) ? 100 :  (unsigned int) ((0.5 + dist) / (PING_COUNT - zero_count ) );
 }
 
-  int dir = 0;
+  int dir = 1;
 
 void loop()
 {
@@ -85,9 +84,9 @@ void loop()
     dir = -1;
     move(-100, -100, 500);
     delay(500);
-  } else if ( dir == -1 || (dist > 10 && dist <= 30 )) {
+  } else if ( dir == -1 || (dist > 10 && dist <= 50 )) {
     dir = 0;
-    move(dir * 200, dir * -200, 2000);
+    move(200, -200, 2000);
   } else {
     dir = 1;
     move(200, 200, dist * 10);
