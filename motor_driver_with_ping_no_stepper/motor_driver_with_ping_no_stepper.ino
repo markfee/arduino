@@ -2,8 +2,6 @@
 // motor one
 
 #include <NewPing.h>
-//#include <Stepper.h>
-
 
 #define TRIGGER_PIN  12  // Arduino pin tied to trigger pin on the ultrasonic sensor.
 #define ECHO_PIN     13 // Arduino pin tied to echo pin on the ultrasonic sensor.
@@ -11,47 +9,20 @@
 
 NewPing sonar(TRIGGER_PIN, ECHO_PIN, MAX_DISTANCE); // NewPing setup of pins and maximum distance.
 
-/*-----( Declare Constants, Pin Numbers )-----*/
-//---( Number of steps per revolution of INTERNAL motor in 4-step mode )---
-// #define STEPS_PER_MOTOR_REVOLUTION 32   
-
-//---( Steps per OUTPUT SHAFT of gear reduction )---
-#define STEPS_PER_OUTPUT_REVOLUTION 32 * 64  //2048  
-
-/*-----( Declare objects )-----*/
-// create an instance of the stepper class, specifying
-// the number of steps of the motor and the pins it's
-// attached to
-
-//The pin connections need to be 4 pins connected
-// to Motor Driver In1, In2, In3, In4  and then the pins entered
-// here in the sequence 1-3-2-4 for proper sequencing
-//Stepper small_stepper(STEPS_PER_MOTOR_REVOLUTION, 2, 4, 3, 5);
-
-
-
 int in1 = 8;
 int in2 = 9;
 // motor two
 int in3 = 10;
 int in4 = 11;
-//PWM
-int enA = 3; 
+//PWM -- these need to be on PWM enabled pins!
+int enA = 4; 
 int enB = 5;
 
+#define LEFT_BUMPER_PIN 2
+#define RIGHT_BUMPER_PIN 3
 
-int motorPin1 = 2;
-int motorPin2 = 3;
-int motorPin3 = 4;
-int motorPin4 = 5;
-
-int motorSpeed = 800;  //variable to set stepper speed
-int count = 0;          // count of steps made
-int countsperrev = 128; // number of steps per full revolution
-//int lookup[8] = {B01000, B01100, B00100, B00110, B00010, B00011, B00001, B01001};
-int lookup[8] = {B00001, B00011, B00010, B00110, B00100, B01100, B01000, B01001};
-
-
+bool leftObstacleDetected = false;
+bool rightObstacleDetected = false;
 
 void setup()
 {
@@ -63,19 +34,32 @@ void setup()
   pinMode(in2, OUTPUT);
   pinMode(in3, OUTPUT);
   pinMode(in4, OUTPUT);
-  
-  //declare the motor pins as outputs
-  pinMode(motorPin1, OUTPUT);
-  pinMode(motorPin2, OUTPUT);
-  pinMode(motorPin3, OUTPUT);
-  pinMode(motorPin4, OUTPUT);  
-  char buffer[32];
-  for (int i = 3; i > 0; i--) {
-    sprintf(buffer, "Please wait %d / 2 seconds\n", i);
-    Serial.print(buffer);
-    delay(500);
-  }
+
+  pinMode(LEFT_BUMPER_PIN, INPUT);
+  pinMode(RIGHT_BUMPER_PIN, INPUT);
+  digitalWrite(LEFT_BUMPER_PIN, HIGH); // Turn on pullup resistor
+  digitalWrite(RIGHT_BUMPER_PIN, HIGH); // Turn on pullup resistor
+
+  attachInterrupt(0, leftObstacle, FALLING);
+  attachInterrupt(1, rightObstacle, FALLING);
 }
+
+void leftObstacle() {
+    if (leftObstacleDetected) 
+      return;
+    leftObstacleDetected = true;  
+    Serial.println("\nLeft Obstacle");
+    stop();  
+}
+
+void rightObstacle() {
+    if (rightObstacleDetected) 
+      return;
+    rightObstacleDetected = true;
+    Serial.println("\nRight Obstacle");
+    stop();  
+}
+
 
 void setSpeed(int left, int right)
 {
@@ -99,7 +83,7 @@ char chbuffer[64];
 void move(int left, int right, int time) 
 {
   sprintf(chbuffer, "Moving %d, %d", left, right);
-  Serial.println(chbuffer); 
+//  Serial.println(chbuffer); 
   if (!doMove) {
     return;
   }
@@ -140,75 +124,40 @@ unsigned int distAvg;
 unsigned int distMin;
 
 void loop()
-{
+{    
+    if (leftObstacleDetected || rightObstacleDetected) {
+      if (leftObstacleDetected && rightObstacleDetected) {
+        Serial.print("X");
+        move(-200, -200, 500);
+      } else if (leftObstacleDetected) {
+        Serial.print("<");
+        move(-200, -200, 250);
+        move(200, -200, 1000);
+      } else if (rightObstacleDetected) {
+        Serial.print(">");
+        move(-200, -200, 250);
+        move(-200, 200, 1000);
+      }
+      leftObstacleDetected = false; 
+      rightObstacleDetected = false;
+      delay(250);
+      return;
+    }
     distFwd = sample_dist_cm(); 
-    if (distFwd > 50) {
-      Serial.println("Forward");
+
+
+    if (distFwd > 30) {
+      Serial.print("+");
       move(200, 200, distFwd * 10);
     } 
     else if (distFwd > 10) {
-      Serial.println("Rotate");
+      Serial.print("O");
       move(200, -200, 1000);
     } else {
-      Serial.println("Back Up a Bit");
+      Serial.print("-");
       move(-200, -200, 500);
     }
 
   return;
-/*  
-  Serial.println("clockwise");
-  clockwise();
-  distLeft = sample_dist_cm();
-  anticlockwise();
 
-  Serial.println("anticlockwise");
-  anticlockwise();
-  distRight = sample_dist_cm();
-  clockwise();
-*/
-
-  distAvg = (unsigned int) ( ( (distFwd + distLeft + distRight) / 3 )  + 0.5 );
-//  distMin = distLeft < distRight ? distLeft : distRight;
-  
-//  sprintf(chbuffer, "distLeft: %d, distRight: %d, distAvg: %d, distMin: %d", distLeft, distRight, distAvg, distMin);
-  Serial.println(chbuffer);
-  if (distAvg > 0 && distAvg <= 10) { // Something Ahead
-    dir = -1;
-    move(-100, -100, 500);
-    delay(500);
-  } else if ( dir == -1 || (distMin > 10 && distMin <= 50 )) {
-    dir = 0;
-    int objectLeft = distLeft < distRight ? -1 : 0;
-    int objectRight = -(objectLeft+1);
-
-    move(objectLeft * 200, objectRight * 200, 1000);
-  } else {
-    dir = 1;
-    move(200, 200, distAvg * 10);
-  }
 }
-//////////////////////////////////////////////////////////////////////////////
-//set pins to ULN2003 high in sequence from 1 to 4
-//delay "motorSpeed" between each pin setting (to determine speed)
-/*
-void clockwise()
-{
-  small_stepper.setSpeed(100);   
-  small_stepper.step(STEPS_PER_OUTPUT_REVOLUTION / 12);  
-}
-
-void anticlockwise()
-{
-  small_stepper.setSpeed(100);   
-  small_stepper.step(- STEPS_PER_OUTPUT_REVOLUTION / 12);  
-}
-*/
-
-void setOutput(int out)
-{
-  digitalWrite(motorPin1, bitRead(lookup[out], 0));
-  digitalWrite(motorPin2, bitRead(lookup[out], 1));
-  digitalWrite(motorPin3, bitRead(lookup[out], 2));
-  digitalWrite(motorPin4, bitRead(lookup[out], 3));
-}
-
