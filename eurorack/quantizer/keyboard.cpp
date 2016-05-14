@@ -13,15 +13,15 @@ int Keyboard::detect_key_down()
 // int pin is the analog pin number to read 
 {
   int c = analogRead(pin); // get the analog value  
-  int key = (c>1000) ? 0
-    : (c < 25) ? 1
-    : (c < 110) ? 2
-    : (c < 185) ? 3
+  int key = (c>1000) ? -1
+    : (c < 25) ? 0
+    : (c < 110) ? 1
+    : (c < 185) ? 2
     : c;
     if (key <= 12 && current_key != key) {
         current_key = key;
         Serial.println(c);
         return current_key;
     }
-    return 0;
+    return -1;
 }
