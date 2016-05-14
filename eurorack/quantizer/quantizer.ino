@@ -4,7 +4,6 @@
 const int CV_IN = A0;
 const int KEYBOARD_IN = A5;
 const boolean DEBUG = true;
-const int SERIAL_OFFSET = (DEBUG ? 2 : 0);
 const int OCTAVE_RANGE = 5;
 
 const int MIN_NOTE = 0;
@@ -35,8 +34,8 @@ void setup()
 //  UCSR0B = 0;
   keyboard = new Keyboard(KEYBOARD_IN);
   
-  for(int i = 0; i < 12 - SERIAL_OFFSET; i++) {
-    notes[i].set_led_pin(i + SERIAL_OFFSET);
+  for(int i = 0; i < 12; i++) {
+    notes[i].set_led_pin(13 - i);
   }
   
   set_scale(MAJOR_SCALE);
