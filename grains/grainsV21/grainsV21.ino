@@ -106,6 +106,7 @@ void audioOn() {
 
 
 void setup() {
+  Serial.begin(9600); 
   pinMode(PWM_PIN,OUTPUT);
   audioOn();
   pinMode(LED_PIN,OUTPUT);
@@ -115,11 +116,33 @@ void loop() {
   int pwmv = analogRead(SYNC_CONTROL)+(analogRead(SYNC_OFFSET)/5-205);
     if (pwmv > 1023) pwmv = 1023;
         if (pwmv < 0) pwmv = 0;
+  Serial.print("pwmv: ");      
+  Serial.print(pwmv);      
+  Serial.print("\t");      
   syncPhaseInc = mapFreq(pwmv);
+
+  Serial.print("syncPhaseInc: ");      
+  Serial.print(syncPhaseInc);      
+  Serial.print("\t");      
+
   grainPhaseInc  = mapFreq(analogRead(GRAIN_FREQ_CONTROL)) * 2;
+  if (grainPhaseInc < 620) grainPhaseInc = 620;
+  Serial.print("  grainPhaseInc: ");      
+  Serial.print(  grainPhaseInc);      
+  Serial.print("\t");      
   grainDecay     = 10 / 8;
+  Serial.print("  grainDecay: ");      
+  Serial.print(  grainDecay);      
+  Serial.print("\t");      
   grain2PhaseInc = mapFreq(analogRead(GRAIN2_FREQ_CONTROL)) * 4;
+  Serial.print("grain2PhaseInc: ");      
+  Serial.print(grain2PhaseInc);      
+  Serial.print("\t");      
   grain2Decay    = 10 / 4;
+  Serial.print("grain2Decay: ");      
+  Serial.print(grain2Decay);      
+  Serial.print("\t");      
+  Serial.print("\n");      
 }
 
 SIGNAL(PWM_INTERRUPT)
