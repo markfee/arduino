@@ -29,9 +29,9 @@ int Keyboard::detect_key_down()
     : c;
     if (key <= 12 && current_key != key) {
         current_key = key;
-        Serial.println(c);
+//        Serial.println(c);
         return current_key;
     }
-    Serial.println(c);
+//    Serial.println(c);
     return -1;
 }
