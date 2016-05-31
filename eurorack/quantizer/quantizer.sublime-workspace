@@ -1,0 +1,364 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"str_s",
+				"str_split"
+			],
+			[
+				"BL",
+				"BLACK"
+			],
+			[
+				"row",
+				"row_num"
+			],
+			[
+				"print_",
+				"print_blocks"
+			],
+			[
+				"isn",
+				"is_null"
+			],
+			[
+				"array_s",
+				"array_shift"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "quantizer.ino",
+			"settings":
+			{
+				"buffer_size": 8589,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"selected_items":
+		[
+		],
+		"width": 392.0
+	},
+	"console":
+	{
+		"height": 0.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/home/mark/src/gchq/problem1/constraints.txt",
+		"/home/mark/src/gchq/problem1/rows.php",
+		"/home/mark/src/gchq/problem1/solve.php",
+		"/home/mark/src/gchq/problem1/grid.php",
+		"/home/mark/.config/sublime-text-2/Packages/User/Preferences.sublime-settings",
+		"/home/mark/src/www/caninecare/assets/css/main.css",
+		"/home/mark/Downloads/bank_statements/FD_Nicki/all.csv",
+		"/media/hdd2/shared/photos/wrongdate/process.php",
+		"/mnt/pi/media/nas1/media/kids/portable/tv_series/What's New Scooby-Doo/go",
+		"/home/mark/.config/sublime-text-2/Packages/Default/Default (Linux).sublime-keymap",
+		"/home/mark/Documents/docs/chords/Young Parisians.txt",
+		"/etc/fstab",
+		"/home/mark/root.text",
+		"/home/mark/src/scripts/scripts.sublime-project",
+		"/home/mark/local.text",
+		"/home/mark/src/scripts/wmaConv/tagcopy.sh",
+		"/home/mark/src/scripts/wmaConv/functions",
+		"/home/mark/src/scripts/wmaConv/createList",
+		"/home/mark/src/scripts/photoMerge/setFolderDate.sh",
+		"/home/mark/src/www/chordcalc/index.php",
+		"/home/mark/src/scripts/photoMerge/photoToAndroid.sh",
+		"/home/mark/src/scripts/photoMerge/photoShrink.sh",
+		"/home/mark/src/scripts/photoMerge/mimeSort.sh",
+		"/home/mark/src/scripts/photoMerge/photoImport.sh",
+		"/home/mark/src/scripts/photoMerge/go.sh",
+		"/home/mark/.unison/unison.log",
+		"/home/mark/.unison/Photo Sync.prf"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"MAX_NOTE",
+			"SLAVESELECT0",
+			"A4\n\nA4\nA4",
+			"check_for_fit",
+			"$possible_result_array",
+			"check_for_fit",
+			"check_results_for_fit",
+			"16",
+			"16\n",
+			"whitespace",
+			"check_for",
+			"add_all_possible_results",
+			"apply_definite_finds",
+			"name",
+			"print_constrained_values",
+			"print",
+			"check_for_fit",
+			"get_max_constraint_length",
+			"print",
+			" ",
+			"find_possible_results",
+			"count",
+			"check_results_for_fit",
+			"apply_definite_finds",
+			"add_all_possible_results",
+			"dump",
+			"Grid::WHITESPACE",
+			"WHITESPACE",
+			"print",
+			"apply_definite_finds",
+			"print",
+			"add_all_possible_results",
+			"$whitespace_max",
+			"add_all_possible_results",
+			"get_possible_results",
+			"check_results_for_fit",
+			"$this->possible_results",
+			"$this->possible_results[]",
+			"get_possible_results",
+			"new Row",
+			"$this->found_results",
+			"blocks_to_string",
+			"$this->found_results",
+			"rejected_results",
+			"set_found_results",
+			"$this->found_results",
+			"set_found_results",
+			"rejected_results",
+			"possible_results",
+			"rejected_results",
+			"blocks_to_string",
+			"$this->possible_results",
+			"possible_results",
+			"\"def\"",
+			"def",
+			"get_possible_results",
+			"found_results",
+			"check_for_fit",
+			" ",
+			"this->found",
+			"getReferenceToCol",
+			"print_grid()",
+			"Row(",
+			"row_constraints",
+			"build_constraints",
+			"row_constraints",
+			"this->grid",
+			"build_constraints",
+			"build_row_constraints",
+			"Rows",
+			"$rows = [\n    [7, 3, 1, 1, 7], \n    [1, 1, 2, 2, 1, 1], \n    [1, 3, 1, 3, 1, 1, 3, 1], \n    [1, 3, 1, 1, 6, 1, 3, 1], \n    [1, 3, 1, 5, 2, 1, 3, 1], \n    [1, 1, 2, 1, 1], \n    [7, 1, 1, 1, 1, 1, 7], \n    [3, 3], \n    [1, 2, 3, 1, 1, 3, 1, 1, 2], \n    [1, 1, 3, 2, 1, 1], \n    [4, 1, 4, 2, 1, 2], \n    [1, 1, 1, 1, 1, 4, 1, 3], \n    [2, 1, 1, 1, 2, 5], \n    [3, 2, 2, 6, 3, 1], \n    [1, 9, 1, 1, 2, 1], \n    [2, 1, 2, 2, 3, 1], \n    [3, 1, 1, 1, 1, 5, 1], \n    [1, 2, 2, 5], \n    [7, 1, 2, 1, 1, 1, 3], \n    [1, 1, 2, 1, 2, 2, 1], \n    [1, 3, 1, 4, 5, 1], \n    [1, 3, 1, 3, 10, 2], \n    [1, 3, 1, 1, 6, 6], \n    [1, 1, 2, 1, 1, 2], \n    [7, 2, 1, 2, 5]\n  ];\n$columns = [\n  [7, 2, 1, 1, 7], \n  [1, 1, 2, 2, 1, 1], \n  [1, 3, 1, 3, 1, 3, 1, 3, 1], \n  [1, 3, 1, 1, 5, 1, 3, 1], \n  [1, 3, 1, 1, 4, 1, 3, 1], \n  [1, 1, 1, 2, 1, 1], \n  [7, 1, 1, 1, 1, 1, 7], \n  [1, 1, 3], \n  [2, 1, 2, 1, 8, 2, 1], \n  [2, 2, 1, 2, 1, 1, 1, 2], \n  [1, 7, 3, 2, 1], \n  [1, 2, 3, 1, 1, 1, 1, 1], \n  [4, 1, 1, 2, 6], \n  [3, 3, 1, 1, 1, 3, 1], \n  [1, 2, 5, 2, 2], \n  [2, 2, 1, 1, 1, 1, 1, 2, 1], \n  [1, 3, 3, 2, 1, 8, 1], \n  [6, 2, 1], \n  [7, 1, 4, 1, 1, 3], \n  [1, 1, 1, 1, 4], \n  [1, 3, 1, 3, 7, 1], \n  [1, 3, 1, 1, 1, 2, 1, 1, 4], \n  [1, 3, 1, 4, 3, 3], \n  [1, 1, 2, 2, 2, 6, 1], \n  [7, 1, 3, 2, 1, 1]\n];",
+			"[0-9]{1}",
+			"[0-9]",
+			"10",
+			"\\([0-9]*\\)",
+			"[0-9]*",
+			"[0-9]",
+			"0",
+			"\\[0-9\\]+",
+			"[0-9]+",
+			"[0-9]{1,1}",
+			"[0-9]\\{1,1\\}",
+			"[0-9]{1}",
+			" ",
+			"blocks_to_string",
+			"print_blocks",
+			"possible_results",
+			"print_blocks",
+			"garden",
+			"prev",
+			".goto-prev",
+			"goto-next",
+			"goto-prev",
+			"previous",
+			"#banner",
+			".logo",
+			"logo",
+			"^\\}",
+			"}",
+			"^\\}",
+			"}",
+			"^{",
+			"^\\{",
+			"\\{[ \\n]*\\}",
+			"{[ \\n]*}",
+			"{{",
+			"/* XSmall */",
+			"@media screen and (max-width: 1680px)\n@media screen and (max-width: 1280px)\n@media screen and (max-width: 980px)\n@media screen and (max-width: 736px)\n@media screen and (max-width: 480px)\n@media screen and (max-width: 1680px)\n@media screen and (max-width: 1280px)\n@media screen and (max-width: 980px)\n@media screen and (max-width: 736px)\n@media screen and (max-width: 480px)\n@media (-webkit-min-device-pixel-\n@media screen and (max-width: 1680px)\n@media screen and (max-width: 1280px)\n@media screen and (max-width: 980px)\n@media screen and (max-width: 736px)\n@media screen and (max-width: 480px)",
+			"@media screen and (max-width: 480px)",
+			"\\{\\n\\n",
+			"{\\n\\n",
+			"\\*/\\n\\n",
+			"*/\\n\\n",
+			"\\n\\n",
+			"}",
+			"*/",
+			"*/\\n",
+			"}",
+			"|",
+			"orgmaster",
+			"Date,Description,Amount,Balance",
+			".TOPAZ.DVD",
+			"photoImport",
+			"TMP_DROID",
+			"$1",
+			"ctrl+shift",
+			"cp",
+			"sed"
+		],
+		"highlight": false,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"_",
+			"\\n",
+			"DEST",
+			"SRC"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "quantizer.ino",
+					"settings":
+					{
+						"buffer_size": 8589,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2924,
+								2924
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1479.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		},
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			],
+			[
+				1,
+				0,
+				2,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			0.970202622169,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"replace":
+	{
+		"height": 64.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"show_minimap": false,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": false,
+	"side_bar_width": 197.0,
+	"status_bar_visible": true
+}
