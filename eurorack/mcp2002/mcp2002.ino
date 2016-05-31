@@ -15,8 +15,8 @@ void setup()
   pDac = new Mcp4922(10);
 
   pAttackStage      = new EnvelopeStage(0, 4095, 100000, "attack");
-  pDecayStage       = new EnvelopeStage(4095, 2000, 1000000, "   decay");
-  pReleaseStage     = new EnvelopeStage(4095, 0, 3000000, "release");
+  pDecayStage       = new EnvelopeStage(4095, 0, 1000000, "decay");
+  pReleaseStage     = new EnvelopeStage(4095, 0, 1000000, "release");
 
   pAttackStage->set_next_stage(pDecayStage);
   pAttackStage->set_release_stage(pReleaseStage);

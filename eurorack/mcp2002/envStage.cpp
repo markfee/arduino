@@ -64,6 +64,12 @@ void EnvelopeStage::trigger_on()
     current_state   =   true;
     note_on         =   true;
     start_time      =   micros();
+    if (this->pNextStage) {
+        this->pNextStage->current_state = this->pNextStage->note_on = false;
+    }
+    if (this->pReleaseStage) {
+        this->pReleaseStage->current_state = this->pReleaseStage->note_on = false;
+    }
 }
 
 void EnvelopeStage::trigger_off()
@@ -81,7 +87,7 @@ void EnvelopeStage::trigger_off()
     { // or lets kick in the release stage
         this->pCurrentStage = this->pReleaseStage;
         this->pReleaseStage->startValue = latestValue;
-        this->pReleaseStage->set_state(false); // Trick the release stage into thinking a key is dowm
+        this->pReleaseStage->set_state(false); // Trick the release stage into thinking a key is down
         this->pReleaseStage->set_state(true);
     } else 
     { // if there is no next stage and no current stage then set current stage back to this.
