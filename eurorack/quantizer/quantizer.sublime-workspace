@@ -32,10 +32,70 @@
 	"buffers":
 	[
 		{
+			"file": "/home/mark/Documents/geek/src/arduino/eurorack/mcp2002/mcp2002.ino",
+			"settings":
+			{
+				"buffer_size": 854,
+				"line_ending": "Unix",
+				"name": "/*"
+			}
+		},
+		{
+			"file": "/home/mark/Documents/geek/src/arduino/eurorack/mcp2002/mcp4922.h",
+			"settings":
+			{
+				"buffer_size": 1343,
+				"line_ending": "Unix",
+				"name": "mcp2002.h"
+			}
+		},
+		{
+			"file": "/home/mark/Documents/geek/src/arduino/eurorack/mcp2002/envStage.cpp",
+			"settings":
+			{
+				"buffer_size": 1129,
+				"line_ending": "Unix",
+				"name": "envStage.cpp"
+			}
+		},
+		{
+			"file": "/home/mark/Documents/geek/src/arduino/eurorack/mcp2002/envStage.h",
+			"settings":
+			{
+				"buffer_size": 771,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/home/mark/Documents/geek/src/arduino/eurorack/mcp2002/mcp4922.cpp",
+			"settings":
+			{
+				"buffer_size": 1865,
+				"line_ending": "Unix",
+				"name": "mcp2002.cpp"
+			}
+		},
+		{
 			"file": "quantizer.ino",
 			"settings":
 			{
 				"buffer_size": 8589,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "keyboard.cpp",
+			"settings":
+			{
+				"buffer_size": 802,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "keyboard.h",
+			"settings":
+			{
+				"buffer_size": 259,
 				"line_ending": "Unix"
 			}
 		}
@@ -108,6 +168,15 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"Mcp4922",
+			"__MCP4922__H",
+			"DATAIN",
+			"__KEYBOARD__H",
+			"DATAOUT",
+			"LOW",
+			"SPI_setup",
+			"write_valueX",
+			"write_valueY",
 			"MAX_NOTE",
 			"SLAVESELECT0",
 			"A4\n\nA4\nA4",
@@ -226,16 +295,7 @@
 			"*/",
 			"*/\\n",
 			"}",
-			"|",
-			"orgmaster",
-			"Date,Description,Amount,Balance",
-			".TOPAZ.DVD",
-			"photoImport",
-			"TMP_DROID",
-			"$1",
-			"ctrl+shift",
-			"cp",
-			"sed"
+			"|"
 		],
 		"highlight": false,
 		"in_selection": false,
@@ -243,6 +303,10 @@
 		"regex": false,
 		"replace_history":
 		[
+			"EnvelopeStage",
+			"__ENV_STAGE__H",
+			"__MCP4922__H",
+			"write_valueB",
 			"_",
 			"\\n",
 			"DEST",
@@ -257,11 +321,147 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 7,
 			"sheets":
 			[
 				{
 					"buffer": 0,
+					"file": "/home/mark/Documents/geek/src/arduino/eurorack/mcp2002/mcp2002.ino",
+					"settings":
+					{
+						"buffer_size": 854,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								185,
+								185
+							]
+						],
+						"settings":
+						{
+							"auto_name": "/*",
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "/home/mark/Documents/geek/src/arduino/eurorack/mcp2002/mcp4922.h",
+					"settings":
+					{
+						"buffer_size": 1343,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1343,
+								1343
+							]
+						],
+						"settings":
+						{
+							"auto_name": "mcp2002.h",
+							"syntax": "Packages/C++/C++.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "/home/mark/Documents/geek/src/arduino/eurorack/mcp2002/envStage.cpp",
+					"settings":
+					{
+						"buffer_size": 1129,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1035,
+								1035
+							]
+						],
+						"settings":
+						{
+							"auto_name": "envStage.cpp",
+							"syntax": "Packages/C++/C++.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "/home/mark/Documents/geek/src/arduino/eurorack/mcp2002/envStage.h",
+					"settings":
+					{
+						"buffer_size": 771,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								698,
+								698
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "/home/mark/Documents/geek/src/arduino/eurorack/mcp2002/mcp4922.cpp",
+					"settings":
+					{
+						"buffer_size": 1865,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								459,
+								459
+							]
+						],
+						"settings":
+						{
+							"auto_name": "mcp2002.cpp",
+							"syntax": "Packages/C++/C++.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
 					"file": "quantizer.ino",
 					"settings":
 					{
@@ -272,8 +472,8 @@
 						"selection":
 						[
 							[
-								2924,
-								2924
+								2647,
+								2647
 							]
 						],
 						"settings":
@@ -284,6 +484,60 @@
 						},
 						"translation.x": 0.0,
 						"translation.y": 1479.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "keyboard.cpp",
+					"settings":
+					{
+						"buffer_size": 802,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "keyboard.h",
+					"settings":
+					{
+						"buffer_size": 259,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								259,
+								259
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -302,7 +556,7 @@
 	},
 	"input":
 	{
-		"height": 0.0
+		"height": 33.0
 	},
 	"layout":
 	{
@@ -358,7 +612,7 @@
 	"show_minimap": false,
 	"show_open_files": false,
 	"show_tabs": true,
-	"side_bar_visible": false,
+	"side_bar_visible": true,
 	"side_bar_width": 197.0,
 	"status_bar_visible": true
 }
