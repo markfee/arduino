@@ -20,7 +20,7 @@ class EnvelopeStage {
     void trigger_off(); // A trigger off is recieved
     void end_of_stage(); // The stage reaches it's end
 
-    EnvelopeStage* pCurrentStage;
+//    EnvelopeStage* pCurrentStage;
     EnvelopeStage* pNextStage;
     EnvelopeStage* pReleaseStage;
     Envelope*      pParent;

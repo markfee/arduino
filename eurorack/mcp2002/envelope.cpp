@@ -35,6 +35,7 @@ long Envelope::get_value()
 
 void Envelope::on_trigger_on()
 {
+    Serial.println("on_trigger_on()");
     if (this->pCurrentStage) {
         this->pCurrentStage->stop();
     }
@@ -60,7 +61,6 @@ void Envelope::on_trigger_off()
         int final_value = this->pCurrentStage->stop(); // Stop the current stage
         Serial.println(final_value);
         if (this->pCurrentStage = this->pCurrentStage->get_release_stage()) {
-            Serial.println("starting release stage");
             this->pCurrentStage->start(final_value); // and start the release stage (if the current stage has one)
         }
     }
