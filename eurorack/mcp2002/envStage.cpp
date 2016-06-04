@@ -88,11 +88,27 @@ long EnvelopeStage::get_value()
     return latestValue;
 }
 
-void EnvelopeStage::set_length(int length) // from 0 to 1023
+long  EnvelopeStage::convert_read_value(int val, float curve, unsigned long max_value)
 {
-    unsigned long new_length = pow((1.0 * length / 1024), 5) * MAX_LENGTH;
-    unsigned long new_length_sec = (1.0 * new_length) / 1000;
-//    Serial.print(this->pName); Serial.print(": "); Serial.print(new_length_sec); Serial.println(" milli seconds "); 
-    this->micro_length = max(1, new_length);
+    return pow((1.0 * val / 1024), curve) * max_value;
 }
+
+void EnvelopeStage::set_length(int length, float curve) // from 0 to 1023
+{
+//    unsigned long new_length = pow((1.0 * length / 1024), curve) * MAX_LENGTH;
+//    this->micro_length = max(1, new_length);
+
+    this->micro_length = max(1, convert_read_value(length, curve, MAX_LENGTH));
+}
+
+void EnvelopeStage::set_start(int val, float curve)
+{
+    this->startValue = convert_read_value(val, curve, Envelope::MAXIMUM_VALUE);
+}
+
+void EnvelopeStage::set_end(int val, float curve)
+{
+    this->endValue = convert_read_value(val, curve, Envelope::MAXIMUM_VALUE);
+}
+
 

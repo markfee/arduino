@@ -45,7 +45,10 @@ class EnvelopeStage {
     void start();   // start the stage
     void start(int initial_value);   // start the stage
     int stop();     // stop the stage
-    void set_length(int length); // from 0 to 1023
+    void set_length(int length, float curve); // from 0 to 1023, curve from 0.1 (slow) to 5 fast
+    void set_start(int val, float curve); // from 0 to 1023, curve from 0.1 (slow) to 5 fast
+    void set_end(int val, float curve); // from 0 to 1023, curve from 0.1 (slow) to 5 fast
+    long convert_read_value(int val, float curve, unsigned long max_value); // from 0 to 1023, curve from 0.1 (slow) to 5 fast
 
 };
 #endif

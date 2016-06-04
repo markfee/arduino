@@ -14,8 +14,8 @@ Envelope* pEnvelope;
 
 #define TRIGGER_IN 0
 #define ATTACK_IN 1
-#define SLOPE_IN 2
-#define DECAY_IN 3
+#define DECAY_IN 2
+#define SUSTAIN_IN 3
 
 void setup() 
 {
@@ -55,7 +55,7 @@ void setup()
   pSustainStage->set_parent(pEnvelope);
 
   pCurrentStage = pAttackStage;
-//  Serial.begin(9600);
+  Serial.begin(9600);
 }
 
 
@@ -68,16 +68,20 @@ void loop()
   count++;
   if (Envelope::ON == pEnvelope->get_state() || (count % 10000) == 0) {
     int attack  = analogRead(ATTACK_IN);
-    int slope   = analogRead(SLOPE_IN);
     int decay   = analogRead(DECAY_IN);
+    int sustain   = analogRead(SUSTAIN_IN);
 
-//    Serial.print("attack: "); Serial.println(attack);    
-//    Serial.print("slope:  "); Serial.println(slope);    
-//    Serial.print("decay:  "); Serial.println(decay);  
-    pAttackStage->set_length(attack); // from 0 to 1023
-//    pAttackStage->set_length(attack); // from 0 to 1023
-//    pAttackStage->set_length(attack); // from 0 to 1023
+    pAttackStage->set_length(attack, 5); // from 0 to 1023
+    pDecayStage->set_length(decay, 3); // from 0 to 1023
+    pReleaseStage->set_length(decay, 0.5); // from 0 to 1023
 
+   Serial.print("attack: "); Serial.println(attack);    
+   Serial.print("decay:  "); Serial.println(decay);  
+   Serial.print("sustain:  "); Serial.println(sustain);    
+
+
+    pDecayStage->set_end(sustain, 1);
+    pSustainStage->set_start(sustain, 1);
   }
   return;
 }
