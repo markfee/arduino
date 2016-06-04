@@ -16,6 +16,7 @@ class Envelope {
         long get_value();  // Returns the value at the current time
         EnvelopeStage* get_current_stage();
         void on_end_of_stage();
+        inline TRIGGER_STATE get_state() { return state;}
     private:
         EnvelopeStage* pFirstStage;
         EnvelopeStage* pCurrentStage;

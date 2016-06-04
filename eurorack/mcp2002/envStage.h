@@ -3,6 +3,7 @@
 #define __ENV_STAGE__H
 #include "Arduino.h"
 
+#define MAX_LENGTH 10000000 // 1 minute
 class Envelope;
 /*
     Represents a linear stage of an envelope that rises or drops from startValue to endValue over n micro seconds
@@ -11,6 +12,7 @@ class EnvelopeStage {
   private:  
     long startValue;
     long endValue;
+    long valueRange;
 //    int direction; // 1 or -1
     unsigned long start_time;
     unsigned long micro_length; // stage length in microseconds. 1*10^(-6) Seconds
@@ -43,5 +45,7 @@ class EnvelopeStage {
     void start();   // start the stage
     void start(int initial_value);   // start the stage
     int stop();     // stop the stage
+    void set_length(int length); // from 0 to 1023
+
 };
 #endif
