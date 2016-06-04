@@ -1,5 +1,6 @@
 /*envStage.cpp*/
 #include "envStage.h"
+#include "envelope.h"
 
 EnvelopeStage::EnvelopeStage(long startValue, long endValue, unsigned long length, char* pName)
 {
@@ -57,6 +58,22 @@ void EnvelopeStage::set_release_stage(EnvelopeStage* pStage)
     this->pReleaseStage     =   pStage;
 }
 
+void EnvelopeStage::start()
+{
+    this->start(this->startValue);
+}
+
+void EnvelopeStage::start(int initial_value)
+{
+    this->startValue = initial_value;
+    this->start_time      =   micros();
+}
+
+int EnvelopeStage::stop()
+{
+    this->start_time = 0;
+    return this->latestValue;
+}
 
 void EnvelopeStage::trigger_on()
 {
@@ -82,17 +99,21 @@ void EnvelopeStage::trigger_off()
 
     // If we are currently on the next stage, then let it know that a key has been released
     if (this->pNextStage != NULL && this->pNextStage == this->pCurrentStage) {
-        this->pCurrentStage->trigger_off();
+        Serial.print(this->pName); Serial.println(" trigger next stage off");
+        this->pNextStage->trigger_off();
         this->pCurrentStage = this;
     } else if (this->latestValue > 0 && this->pReleaseStage != NULL)
     { // or lets kick in the release stage
+        Serial.print(this->pName); Serial.println(" kick in release stage");
         this->pCurrentStage = this->pReleaseStage;
         this->pReleaseStage->startValue = latestValue;
+        Serial.print(this->pReleaseStage->pName); Serial.print(" start value - "); Serial.println(this->pReleaseStage->startValue);
         this->pReleaseStage->set_state(false); // Trick the release stage into thinking a key is down
         this->pReleaseStage->set_state(true);
     } else 
     { // if there is no next stage and no current stage then set current stage back to this.
-        this->pCurrentStage = this;
+        Serial.print(this->pName); Serial.println(" do nothing");
+//        this->pCurrentStage = this;
     }
     Serial.print(this->pName); Serial.println(" trigger off");
 }
@@ -116,17 +137,18 @@ void EnvelopeStage::end_of_stage()
 
 long  EnvelopeStage::get_value()
 {
-    if (!note_on) {
-        latestValue = 0;
-    } else if (!current_state) {
-        latestValue = endValue;
-    } else {
+//    if (!note_on) {
+//        latestValue = 0;
+//    } else if (!current_state) {
+//        latestValue = endValue;
+//    } else {
         unsigned long time_since_trigger = micros() - start_time;
 //        Serial.print(this->pName); Serial.print(" time_since_trigger - "); Serial.println(time_since_trigger);
 //        Serial.print(this->pName); Serial.print(" \% time_since_trigger - "); Serial.println(1.0 * time_since_trigger / micro_length);
         if (time_since_trigger > micro_length) 
         {
-            end_of_stage();
+            this->pParent->on_end_of_stage();
+//            end_of_stage();
             latestValue = endValue;
         } else {
             if (endValue > startValue) {
@@ -135,6 +157,6 @@ long  EnvelopeStage::get_value()
                 latestValue =  startValue - min((((1.0 * time_since_trigger/ micro_length) * (startValue - endValue))), startValue);
             }
         }
-    }
+//    }
     return latestValue;
 }
