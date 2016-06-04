@@ -15,6 +15,7 @@ EnvelopeStage::EnvelopeStage(long startValue, long endValue, unsigned long lengt
     this->pReleaseStage     =   NULL;
     this->pName             =   pName;
     latestValue             =   0;
+    Serial.print(this->pName); Serial.print(" length - "); Serial.println(micro_length);
 }
 
 void EnvelopeStage::set_state(bool state)
@@ -121,16 +122,17 @@ long  EnvelopeStage::get_value()
         latestValue = endValue;
     } else {
         unsigned long time_since_trigger = micros() - start_time;
-
+//        Serial.print(this->pName); Serial.print(" time_since_trigger - "); Serial.println(time_since_trigger);
+//        Serial.print(this->pName); Serial.print(" \% time_since_trigger - "); Serial.println(1.0 * time_since_trigger / micro_length);
         if (time_since_trigger > micro_length) 
         {
             end_of_stage();
             latestValue = endValue;
         } else {
             if (endValue > startValue) {
-                latestValue =  min(((time_since_trigger * (endValue - startValue)) / micro_length), max(startValue, endValue));    
+                latestValue =  startValue + min((((1.0 * time_since_trigger/ micro_length) * (endValue - startValue))), endValue);    
             } else {
-                latestValue =  startValue - min(((time_since_trigger * (startValue - endValue)) / micro_length), max(startValue, endValue));
+                latestValue =  startValue - min((((1.0 * time_since_trigger/ micro_length) * (startValue - endValue))), startValue);
             }
         }
     }

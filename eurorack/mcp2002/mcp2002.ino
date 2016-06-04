@@ -13,17 +13,16 @@ EnvelopeStage* pReleaseStage;
 void setup() 
 {
   pDac = new Mcp4922(10);
-
-  pAttackStage      = new EnvelopeStage(0, 4095, 100000, "attack");
-  pDecayStage       = new EnvelopeStage(4095, 0, 1000000, "decay");
-  pReleaseStage     = new EnvelopeStage(4095, 0, 1000000, "release");
+// Max Value of unsigned long == 4,294,967,295
+  pAttackStage      = new EnvelopeStage(0, 4095, 3000000, "attack");
+  pDecayStage       = new EnvelopeStage(4095, 0, 3000000, "  decay");
+  pReleaseStage     = new EnvelopeStage(4095, 0, 3000000, "    release");
 
   pAttackStage->set_next_stage(pDecayStage);
   pAttackStage->set_release_stage(pReleaseStage);
   pDecayStage->set_release_stage(pReleaseStage);
 
   pCurrentStage = pAttackStage;
-
   Serial.begin(9600);
 }
 

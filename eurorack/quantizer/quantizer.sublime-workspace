@@ -35,25 +35,15 @@
 			"file": "/home/mark/Documents/geek/src/arduino/eurorack/mcp2002/mcp2002.ino",
 			"settings":
 			{
-				"buffer_size": 854,
-				"line_ending": "Unix",
-				"name": "/*"
-			}
-		},
-		{
-			"file": "/home/mark/Documents/geek/src/arduino/eurorack/mcp2002/mcp4922.h",
-			"settings":
-			{
-				"buffer_size": 1343,
-				"line_ending": "Unix",
-				"name": "mcp2002.h"
+				"buffer_size": 883,
+				"line_ending": "Unix"
 			}
 		},
 		{
 			"file": "/home/mark/Documents/geek/src/arduino/eurorack/mcp2002/envStage.cpp",
 			"settings":
 			{
-				"buffer_size": 1129,
+				"buffer_size": 3980,
 				"line_ending": "Unix",
 				"name": "envStage.cpp"
 			}
@@ -62,7 +52,7 @@
 			"file": "/home/mark/Documents/geek/src/arduino/eurorack/mcp2002/envStage.h",
 			"settings":
 			{
-				"buffer_size": 771,
+				"buffer_size": 1295,
 				"line_ending": "Unix"
 			}
 		},
@@ -73,6 +63,15 @@
 				"buffer_size": 1865,
 				"line_ending": "Unix",
 				"name": "mcp2002.cpp"
+			}
+		},
+		{
+			"file": "/home/mark/Documents/geek/src/arduino/eurorack/mcp2002/mcp4922.h",
+			"settings":
+			{
+				"buffer_size": 1343,
+				"line_ending": "Unix",
+				"name": "mcp2002.h"
 			}
 		},
 		{
@@ -124,6 +123,7 @@
 	},
 	"file_history":
 	[
+		"/home/mark/Documents/geek/src/arduino/eurorack/mcp2002/mcp2002.ino",
 		"/home/mark/src/gchq/problem1/constraints.txt",
 		"/home/mark/src/gchq/problem1/rows.php",
 		"/home/mark/src/gchq/problem1/solve.php",
@@ -168,6 +168,11 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"pReleaseStage",
+			"trigger_on",
+			"get_current_stage",
+			"this.",
+			"endValue",
 			"Mcp4922",
 			"__MCP4922__H",
 			"DATAIN",
@@ -290,12 +295,7 @@
 			"{\\n\\n",
 			"\\*/\\n\\n",
 			"*/\\n\\n",
-			"\\n\\n",
-			"}",
-			"*/",
-			"*/\\n",
-			"}",
-			"|"
+			"\\n\\n"
 		],
 		"highlight": false,
 		"in_selection": false,
@@ -303,6 +303,7 @@
 		"regex": false,
 		"replace_history":
 		[
+			"this->",
 			"EnvelopeStage",
 			"__ENV_STAGE__H",
 			"__MCP4922__H",
@@ -321,7 +322,7 @@
 	"groups":
 	[
 		{
-			"selected": 7,
+			"selected": 0,
 			"sheets":
 			[
 				{
@@ -329,22 +330,76 @@
 					"file": "/home/mark/Documents/geek/src/arduino/eurorack/mcp2002/mcp2002.ino",
 					"settings":
 					{
-						"buffer_size": 854,
+						"buffer_size": 883,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								185,
-								185
+								435,
+								435
 							]
 						],
 						"settings":
 						{
-							"auto_name": "/*",
+							"syntax": "Packages/C++/C++.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 17.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "/home/mark/Documents/geek/src/arduino/eurorack/mcp2002/envStage.cpp",
+					"settings":
+					{
+						"buffer_size": 3980,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1934,
+								1934
+							]
+						],
+						"settings":
+						{
+							"auto_name": "envStage.cpp",
 							"syntax": "Packages/C++/C++.tmLanguage",
-							"tab_size": 2,
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 714.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "/home/mark/Documents/geek/src/arduino/eurorack/mcp2002/envStage.h",
+					"settings":
+					{
+						"buffer_size": 1295,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								242,
+								242
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
@@ -354,87 +409,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 1,
-					"file": "/home/mark/Documents/geek/src/arduino/eurorack/mcp2002/mcp4922.h",
-					"settings":
-					{
-						"buffer_size": 1343,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1343,
-								1343
-							]
-						],
-						"settings":
-						{
-							"auto_name": "mcp2002.h",
-							"syntax": "Packages/C++/C++.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "/home/mark/Documents/geek/src/arduino/eurorack/mcp2002/envStage.cpp",
-					"settings":
-					{
-						"buffer_size": 1129,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1035,
-								1035
-							]
-						],
-						"settings":
-						{
-							"auto_name": "envStage.cpp",
-							"syntax": "Packages/C++/C++.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
 					"buffer": 3,
-					"file": "/home/mark/Documents/geek/src/arduino/eurorack/mcp2002/envStage.h",
-					"settings":
-					{
-						"buffer_size": 771,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								698,
-								698
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 4,
 					"file": "/home/mark/Documents/geek/src/arduino/eurorack/mcp2002/mcp4922.cpp",
 					"settings":
 					{
@@ -452,7 +427,38 @@
 						"settings":
 						{
 							"auto_name": "mcp2002.cpp",
-							"syntax": "Packages/C++/C++.tmLanguage"
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "/home/mark/Documents/geek/src/arduino/eurorack/mcp2002/mcp4922.h",
+					"settings":
+					{
+						"buffer_size": 1343,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1343,
+								1343
+							]
+						],
+						"settings":
+						{
+							"auto_name": "mcp2002.h",
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
